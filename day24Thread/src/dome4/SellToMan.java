@@ -14,11 +14,17 @@ public class SellToMan implements Runnable {
     public void run() {
         while(true){
             synchronized (shop) {
-                if(shop.getTicket()>0){
+                if(shop.getTicket()==0){
+                    try {
+                        shop.wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
                     man.buyTicket();
                     shop.setTicket(shop.getTicket()-1);
                     System.out.println(Thread.currentThread().getName()+"已有票"+man.getTicket()+"张");
-                }
+                
             }
             try {
                 Thread.sleep(30);

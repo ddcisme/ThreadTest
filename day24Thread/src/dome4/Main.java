@@ -5,6 +5,7 @@ import java.util.Timer;
  * factory生产票，shop从factory进货，两个man来shop买票
  * show定时查看对象信息，继承TimerTask
  * timer 为定时器对象，scheduled定时，要有个继承TimerTask的对象
+ * 加了wait和notify
  */
 public class Main {
     public static void main(String[] args) {

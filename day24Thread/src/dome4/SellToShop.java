@@ -13,12 +13,22 @@ public class SellToShop implements Runnable{
     @Override
     public void run() {
         while(true){
-            if(factory.getTicket()>0){
-                factory.setTicket(factory.getTicket()-1);
-                shop.setTicket(shop.getTicket()+1);
-                shop.setAllTicket(shop.getAllTicket()+1);
-                System.out.println(Thread.currentThread().getName()+"已有票"+shop.getTicket()+"张");
+            synchronized (factory) {
+                if(factory.getTicket()==0){
+                    try {
+                        factory.wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
+                factory.setTicket(factory.getTicket()-1);
+                synchronized (shop) {
+                    shop.setTicket(shop.getTicket()+1);
+                    shop.setAllTicket(shop.getAllTicket()+1);
+                    shop.notify();
+                }
+                System.out.println(Thread.currentThread().getName()+"已有票"+shop.getTicket()+"张");
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {

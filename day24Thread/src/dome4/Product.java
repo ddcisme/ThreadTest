@@ -12,10 +12,12 @@ public class Product implements Runnable {
     public void run() {
         while(status){
             factory.factory();
-            
+            synchronized (factory) {
+                factory.notify();
+            }
             System.out.println(Thread.currentThread().getName()+"票"+factory.getTicket()+"张");
             try {
-                Thread.sleep(10);
+                Thread.sleep(150);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

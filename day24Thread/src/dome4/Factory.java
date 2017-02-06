@@ -1,8 +1,14 @@
 package dome4;
 
-public class Man {
+public class Factory {
+    //生产了几票
+    private int allTicket=0;
+    //余票
     private int ticket=0;
     private int chair=0;
+    public int getAllTicket() {
+        return allTicket;
+    }
     
     public int getTicket() {
         return ticket;
@@ -16,12 +22,8 @@ public class Man {
     public void setChair(int chair) {
         this.chair = chair;
     }
-    
-    public void buyTicket(){
+    public void factory(){
+        allTicket++;
         ticket++;
     }
-    public void buyChair(){
-        chair++;
-    }
-    
 }

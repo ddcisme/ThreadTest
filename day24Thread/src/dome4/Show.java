@@ -2,7 +2,7 @@ package dome4;
 
 import java.util.TimerTask;
 
-//显示个个对象的信息haha
+//显示个个对象的...信息
 public class Show extends TimerTask {
     //要显示的对象
     private Object[] obs;

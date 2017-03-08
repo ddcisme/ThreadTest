@@ -1,6 +1,7 @@
 package dome4;
 
 import java.util.Timer;
+import java.util.concurrent.Executors;
 /*有Factory,man1,man2,shop4，show 4个对象
  * factory生产票，shop从factory进货，两个man来shop买票
  * show定时查看对象信息，继承TimerTask

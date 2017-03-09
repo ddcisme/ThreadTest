@@ -16,6 +16,7 @@ public class Main {
     }
     public static void main(String[] args) {
         SellStatic sell=new SellStatic();
+        //开始
         Thread thread1 =new Thread(sell,"黄日天");
         Thread thread2 =new Thread(sell,"赵怼地");
         thread1.start();
